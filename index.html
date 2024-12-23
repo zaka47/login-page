@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login & Signup</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #e0f7fa; /* Light blue for light mode */
+      color: #333;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      transition: background-color 0.3s, color 0.3s;
+    }
+
+    body.dark-mode {
+      background-color: #263238; /* Dark grey-blue for dark mode */
+      color: #f4f4f4;
+    }
+
+    .container {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 80%;
+      max-width: 1000px;
+      padding: 30px;
+      background-color: white;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      transition: background-color 0.3s;
+    }
+
+    body.dark-mode .container {
+      background-color: #37474f; /* Darker background for container in dark mode */
+    }
+
+    .left-image {
+      flex: 1;
+      text-align: center;
+      padding-right: 20px;
+    }
+
+    .left-image img {
+      width: 150px; /* Increased size */
+      height: auto;
+    }
+
+    .form-section {
+      flex: 2;
+      width: 100%;
+    }
+
+    h2 {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    .form-group {
+      margin-bottom: 15px;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 5px;
+    }
+
+    input, select {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+
+    body.dark-mode input, body.dark-mode select {
+      background-color: #455a64;
+      color: #f4f4f4;
+      border: 1px solid #607d8b;
+    }
+
+    .btn {
+      width: 100%;
+      padding: 10px;
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    .btn:hover {
+      background-color: #45a049;
+    }
+
+    body.dark-mode .btn {
+      background-color: #333;
+      color: #f4f4f4;
+    }
+
+    .toggle-btn {
+      text-align: center;
+      margin-top: 10px;
+    }
+
+    .toggle-btn a {
+      color: #4CAF50;
+      text-decoration: none;
+    }
+
+    .toggle-btn a:hover {
+      text-decoration: underline;
+    }
+
+    .dark-mode-toggle {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      padding: 10px;
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      border-radius: 50%;
+      cursor: pointer;
+    }
+
+    .dark-mode-toggle:hover {
+      background-color: #45a049;
+    }
+
+    .greeting {
+      text-align: center;
+      font-size: 16px;
+      margin-bottom: 20px;
+      color: #333;
+    }
+
+    body.dark-mode .greeting {
+      color: #f4f4f4;
+    }
+
+  </style>
+</head>
+<body>
+
+  <button class="dark-mode-toggle" onclick="toggleDarkMode()">🌙</button>
+
+  <div class="container">
+    <div class="left-image">
+      <!-- Add an image from the internet or local source -->
+      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ5HwIGtK9NVwO7Fyh44cxF7FFY2IjXn1JqMg&s" alt="Logo">
+    
+    </div>
+
+    <div class="form-section">
+      <!-- Greeting message -->
+      <div class="greeting">
+        Hello, my name is Zakaria
+      </div>
+
+      <!-- Login Form -->
+      <div id="loginForm">
+        <h2>Login</h2>
+        <form action="file:///C:/Users/brahim/Pictures/images.jpg" method="POST">
+          <div class="form-group">
+            <label for="loginUsername">Username:</label>
+            <input type="text" id="loginUsername" name="username" required>
+          </div>
+          <div class="form-group">
+            <label for="loginPassword">Password:</label>
+            <input type="password" id="loginPassword" name="password" required>
+          </div>
+          <button type="submit" class="btn">Login</button>
+        </form>
+        <div class="toggle-btn">
+          <p>Don't have an account? <a href="#" onclick="toggleForm('signup')">Sign Up</a></p>
+        </div>
+      </div>
+
+      <!-- Signup Form -->
+      <div id="signupForm" style="display:none;">
+        <h2>Sign Up</h2>
+        <form action="file:///C:/Users/brahim/Pictures/images.jpg" method="POST">
+          <div class="form-group">
+            <label for="signupUsername">Username:</label>
+            <input type="text" id="signupUsername" name="username" required>
+          </div>
+          <div class="form-group">
+            <label for="signupEmail">Email:</label>
+            <input type="email" id="signupEmail" name="email" required>
+          </div>
+          <div class="form-group">
+            <label for="signupPassword">Password:</label>
+            <input type="password" id="signupPassword" name="password" required>
+          </div>
+          <div class="form-group">
+            <label for="signupAge">Age:</label>
+            <input type="number" id="signupAge" name="age" required>
+          </div>
+          <div class="form-group">
+            <label for="signupGender">Gender:</label>
+            <select id="signupGender" name="gender" required>
+              <option value="" disabled selected>Select your gender</option>
+              <option value="male">Male</option>
+              <option value="female">Female</option>
+              <option value="other">Other</option>
+            </select>
+          </div>
+          <button type="submit" class="btn">Sign Up</button>
+        </form>
+        <div class="toggle-btn">
+          <p>Already have an account? <a href="#" onclick="toggleForm('login')">Login</a></p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function toggleForm(formType) {
+      if (formType === 'signup') {
+        document.getElementById('loginForm').style.display = 'none';
+        document.getElementById('signupForm').style.display = 'block';
+      } else {
+        document.getElementById('signupForm').style.display = 'none';
+        document.getElementById('loginForm').style.display = 'block';
+      }
+    }
+
+    function toggleDarkMode() {
+      document.body.classList.toggle('dark-mode');
+      const darkModeButton = document.querySelector('.dark-mode-toggle');
+      if (document.body.classList.contains('dark-mode')) {
+        darkModeButton.textContent = "☀️";
+      } else {
+        darkModeButton.textContent = "🌙";
+      }
+    }
+  </script>
+
+</body>
+</html>
